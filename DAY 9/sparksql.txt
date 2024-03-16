@@ -1,0 +1,296 @@
+PySpark is an Apache Spark library written in Python to run Python applications
+using Apache Spark capabilities. 
+
+Using PySpark we can run applications parallelly on the distributed 
+cluster (multiple nodes).
+
+In other words, PySpark is a Python API which is an analytical processing
+engine for large-scale powerful distributed data processing and machine learning 
+applications.
+
+Apache Spark is an open-source unified analytics engine used for large-scale 
+data processing.
+
+* The following are the main features of PySpark.
+
+In-memory computation
+Distributed processing using parallelize
+Can be used with many cluster managers (Spark, Yarn, Mesos e.t.c)
+Fault-tolerant
+Immutable
+Lazy evaluation
+Cache & persistence
+Inbuild-optimization when using DataFrames
+Supports ANSI SQL
+
+
+Advantages of PySpark
+- PySpark is a general-purpose, in-memory, distributed processing engine 
+that allows you to process data efficiently in a distributed fashion.
+
+- Applications running on PySpark are 100x faster than traditional systems.
+
+- You will get great benefits from using PySpark for data ingestion pipelines.
+
+- Using PySpark we can process data from Hadoop HDFS, AWS S3, and many file systems.
+
+- PySpark also is used to process real-time data using Streaming and Kafka.
+
+- Using PySpark streaming you can also stream files from the file system and also stream from the socket.
+
+- PySpark natively has machine learning and graph libraries.
+
+
+
+
+PySpark Architecture
+
+https://sparkbyexamples.com/wp-content/uploads/2020/02/spark-cluster-overview.png?ezimgfmt=ng:webp/ngcb1
+
+
+
+Cluster Manager Types
+As of writing this Spark with Python (PySpark) tutorial for beginners, Spark supports below cluster managers:
+
+1. Standalone – a simple cluster manager included with Spark that makes it easy to set up a cluster.
+
+2. Apache Mesos – Mesons is a Cluster manager that can also run Hadoop MapReduce and PySpark applications.
+
+3. Hadoop YARN – the resource manager in Hadoop 2. This is mostly used as a cluster manager.
+
+4. Kubernetes – an open-source system for automating deployment, scaling, and management of containerized applications.
+
+
+PySpark Modules & Packages
+
+- PySpark RDD (pyspark.RDD)
+- PySpark DataFrame and SQL (pyspark.sql)
+- PySpark Streaming (pyspark.streaming)
+- PySpark MLib (pyspark.ml, pyspark.mllib)
+- PySpark GraphFrames (GraphFrames)
+- PySpark Resource (pyspark.resource) It’s new in PySpark 3.0
+
+---------  pyspark shell --------------------------------------
+- - -
+Now open the command prompt and type pyspark command to run the PySpark shell.
+$SPARK_HOME/sbin/pyspark
+
+
+- - -
+Spark History Server
+spark.eventLog.enabled true
+spark.history.fs.logDirectory file:///c:/logs/path
+Now, start the spark history server on Linux or Mac by running it.
+
+$SPARK_HOME/sbin/start-history-server.sh
+If you are running Spark on Windows, you can start the history server by starting the below command.
+$SPARK_HOME/bin/spark-class.cmd org.apache.spark.deploy.history.HistoryServer
+
+- - -
+Spyder IDE & Jupyter Notebook
+Now, set the following environment variable.
+
+PYTHONPATH => %SPARK_HOME%/python;$SPARK_HOME/python/lib/py4j-0.10.9-src.zip;%PYTHONPATH%
+
+Now open Spyder IDE, create a new file with the below simple PySpark program, and run it. You should see 5 in output.
+
+
+- - -
+PySpark RDD – Resilient Distributed Dataset
+In this section of the PySpark tutorial, 
+I will introduce the RDD and explain how to create them 
+and use its transformation and action operations with examples.
+Here is the full article on PySpark RDD in case you want to learn 
+more about it and get your fundamentals strong.
+
+PySpark RDD (Resilient Distributed Dataset) is a fundamental data structure 
+of PySpark that is fault-tolerant, immutable distributed collections 
+of objects, which means once you create an RDD you cannot change it. 
+Each dataset in RDD is divided into logical partitions, 
+which can be computed on different nodes of the cluster.
+- - -
+RDD Creation 
+In order to create an RDD, first, you need to create a SparkSession 
+which is an entry point to the PySpark application. SparkSession can be
+created using a builder() or newSession() methods of the SparkSession.
+
+Spark session internally creates a sparkContext variable of SparkContext.
+ You can create multiple SparkSession objects but only one SparkContext 
+ per JVM. In case you want to create another new SparkContext 
+ you should stop the existing Sparkcontext (using stop()) before creating
+ a new one.
+
+
+# Import SparkSession
+from pyspark.sql import SparkSession
+
+# Create SparkSession 
+spark = SparkSession.builder \
+      .master("local[1]") \
+      .appName("SparkByExamples.com") \
+      .getOrCreate() 
+
+- - -
+using parallelize()
+SparkContext has several functions to use with RDDs. For example, it’s parallelize() method is used to create an RDD from a list.
+
+
+# Create RDD from parallelize    
+dataList = [("Java", 20000), ("Python", 100000), ("Scala", 3000)]
+rdd=spark.sparkContext.parallelize(dataList)
+- - -
+using textFile()
+RDD can also be created from a text file using textFile() function of the SparkContext.
+
+
+# Create RDD from external Data source
+rdd2 = spark.sparkContext.textFile("/path/test.txt")
+Once you have an RDD, you can perform transformation and action operations.
+ Any operation you perform on RDD runs in parallel.
+
+
+- - -
+RDD Operations
+On PySpark RDD, you can perform two kinds of operations.
+
+RDD transformations – Transformations are lazy operations. 
+When you run a transformation(for example update), instead of
+ updating a current RDD, these operations return another RDD.
+
+RDD actions – operations that trigger computation and return RDD values
+to the driver.
+- - -
+RDD Transformations
+Transformations on Spark RDD return another RDD and transformations are lazy meaning they don’t execute until you call an action on RDD. Some transformations on RDDs are flatMap(), map(), reduceByKey(), filter(), sortByKey() and return a new RDD instead of updating the current.
+
+RDD Actions
+RDD Action operation returns the values from an RDD to a driver node.
+ In other words, any RDD function that returns non RDD[T] is considered as
+ an action. 
+
+Some actions on RDDs are count(), collect(), first(), max(), reduce() 
+and more.
+
+- - -- - -
+- - -   PySpark DataFrame Tutorial for Beginners- - -
+- - -- - -
+DataFrame creation
+The simplest way to create a DataFrame is from a Python list of data. DataFrame can also be created from an RDD and by reading files from several sources.
+
+using createDataFrame()
+By using createDataFrame() function of the SparkSession you can create a DataFrame.
+
+
+data = [('James','','Smith','1991-04-01','M',3000),
+  ('Michael','Rose','','2000-05-19','M',4000),
+  ('Robert','','Williams','1978-09-05','M',4000),
+  ('Maria','Anne','Jones','1967-12-01','F',4000),
+  ('Jen','Mary','Brown','1980-02-17','F',-1)
+]
+
+columns = ["firstname","middlename","lastname","dob","gender","salary"]
+df = spark.createDataFrame(data=data, schema = columns)
+
+Since DataFrame’s are structure format that contains names and columns, 
+we can get the schema of the DataFrame using df.printSchema()
+
+df.show() shows the 20 elements from the DataFrame.
++---------+----------+--------+----------+------+------+
+|firstname|middlename|lastname|dob       |gender|salary|
++---------+----------+--------+----------+------+------+
+|James    |          |Smith   |1991-04-01|M     |3000  |
+|Michael  |Rose      |        |2000-05-19|M     |4000  |
+|Robert   |          |Williams|1978-09-05|M     |4000  |
+|Maria    |Anne      |Jones   |1967-12-01|F     |4000  |
+|Jen      |Mary      |Brown   |1980-02-17|F     |-1    |
++---------+----------+--------+----------+------+------+
+
+- - -       DataFrame operations    - - -
+
+Like RDD, DataFrame also has operations like Transformations and Actions.
+
+PySpark – Ways to Rename column on DataFrame
+PySpark withColumn() usage with Examples
+PySpark – How to Filter data from DataFrame
+PySpark orderBy() and sort() explained
+PySpark explode array and map columns to rows
+PySpark – explode nested array into rows
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+- - -
+
+- - -
+
+- - -
+
+- - -
+
+
+
+

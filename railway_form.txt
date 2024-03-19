@@ -1,0 +1,29 @@
+Name: dhruv
+Age: 21
+Gender: M
+Destination: surat
+Ticket Type: First class
+
+Name: D
+Age: 2
+Gender: m
+Destination: w
+Ticket Type: w
+
+Name: Dhruv
+Age: 21
+Gender: Male
+Destination: ladakh
+Name: Dhruv
+Age: 21
+Gender: Male
+Destination: Ladakh
+Ticket Type: First Classs
+
+
+Name: Dhruv maisuria
+Age: 89
+Gender: Male
+Destination: Surat
+Ticket Type: Second class
+

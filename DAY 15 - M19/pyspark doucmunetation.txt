@@ -1,0 +1,224 @@
+PySpark SQL
+PySpark SQL is a module in Spark which integrates relational processing 
+with Spark's functional programming API.
+
+--------PySpark SQL Module --------
+Some important classes of Spark SQL and DataFrames are the following:
+
+1.  pyspark.sql.SparkSession: It represents the main entry point for DataFrame and SQL functionality.
+
+2.  pyspark.sql.DataFrame: It represents a distributed collection of data grouped into named columns.
+
+3.  pyspark.sql.Column: It represents a column expression in a DataFrame.
+
+4.  pyspark.sql.Row: It represents a row of data in a DataFrame.
+
+5.  pyspark.sql.GroupedData: Aggregation methods, returned by DataFrame.groupBy().
+
+6.  pyspark.sql.DataFrameNaFunctions: It represents methods for handling missing data (null values).
+
+7.  pyspark.sql.DataFrameStatFunctions: It represents methods for statistics functionality.
+
+8.  pysark.sql.functions: It represents a list of built-in functions available for DataFrame.
+
+9.  pyspark.sql.types: It represents a list of available data types.
+
+10. pyspark.sql.Window: It is used to work with Window functions.
+
+
+--------Consider the following example of PySpark SQL. --------
+
+import findspark  
+findspark.init()  
+import pyspark # only run after findspark.init()  
+from pyspark.sql import SparkSession   
+spark = SparkSession.builder.getOrCreate()  
+df = spark.sql('''select 'spark' as hello ''')  
+df.show()  
+
+
+----------------Output:------------------------
+
+ +-----+
+|hello|
++-----+
+|spark|
++-----+
+In the above code, we have imported the findspark module and called findspark.init() constructor; then, 
+we imported the SparkSession module to create spark session.
+from pyspark.sql import SparkSession
+
+A spark session can be used to create the Dataset and DataFrame API. A SparkSession can also be used to create DataFrame, register DataFrame as a table, execute SQL over tables, cache table, and read parquet file.
+
+class builder
+
+It is a builder of Spark Session.
+
+getOrCreate()
+It is used to get an existing SparkSession, or if there is no existing one, create a new one based on the options set in the builder.
+
+
+
+---------------Few other Methods---------------------------------
+Few methods of PySpark SQL are following:
+
+1. appName(name)
+It is used to set the name of the application, which will be displayed in the Spark web UI. The parameter name accepts the name of the parameter.
+
+2. config(key=None, value = None, conf = None)
+It is used to set a config option. Options set using this method are automatically propagated to both SparkConf and SparkSession's configuration.
+
+from pyspark.conf import SparkConfSparkSession.builder.config(conf=SparkConf())
+
+
+key- A key name string of a configuration property.
+value- It represents the value of a configuration property.
+conf - An instance of SparkConf.
+
+3. master(master)
+It sets the spark master url to connect to, such as "local" to run locally, "local[4]" to run locally with 4 cores.
+Parameters:
+master:a url for spark master.
+
+4. SparkSession.catalog
+It is an interface that the user may create, drop, alter, or query the underlying database, tables, functions, etc.
+
+5. SparkSession.conf
+It is runtime configuration interface for spark. This is the interface through that the user can get and set all Spark and Hadoop configurations that are relevant to Spark SQL.
+
+
+---------------------------------------------------------------------------------------------------
+-------------------- class pyspark.sql.DataFrame ---------------------------------
+---------------------------------------------------------------------------------------------------
+
+It is a distributed collection of data grouped into named columns.
+ A DataFrame is similar as the relational table in Spark SQL, 
+ can be created using various function in SQLContext.
+
+student = sqlContext.read.csv("...")  
+After creation of dataframe, 
+we can manipulate it using the several domain-specific-languages (DSL) 
+which are pre-defined functions of DataFrame. Consider the following example.
+---------------------------------------------------------------------------------------------------
+# To create DataFrame using SQLContext  
+
+student = sqlContext.read.parquet("...")  
+department = sqlContext.read.parquet("...")  
+student.filter(marks > 55).join(department, student.student_Id == department.id) \  
+.groupBy(student.name, "gender").({"name": "student_Id", "mark": "department"})  
+
+---------------------------------------------------------------------------------------------------
+Let's consider the following example:
+Querying Using Spark SQL
+---------------------------------------------------------------------------------------------------
+In the following code, first, we create a DataFrame and execute the SQL queries to retrieve the data. Consider the following code:
+
+from pyspark.sql import *  
+#Create DataFrame  
+songdf = spark.read.csv(r"C:\Users\DEVANSH SHARMA\top50.csv", inferSchema = True, header = True)  
+#Perform SQL queries  
+songdf.select("Genre").show()  
+songdf.filter(songdf["Genre"]=="pop").show()  
+---------------------------------------------------------------------------------------------------
+Output:
+
++----------------+
+|           Genre|
++----------------+ 
+|    canadian pop|
+|  reggaeton flow|
+|       dance pop|
+|             pop|
+|         dfw rap|
+|             pop|
+|      trap music|
+|             pop|
+|     country rap|
+|      electropop|
+|       reggaeton|
+|       dance pop|
+|             pop|
+|  panamanian pop|
+|canadian hip hop|
+|       dance pop|
+|           latin|
+|         dfw rap|
+|canadian hip hop|
+|     escape room|
++----------------+
+only showing top 20 rows
+
++---+--------------------+-------------+-----+----------------+------+------------+--------------+--------+--------+-------+--------------+------------+----------+
+|_c0|          Track.Name|  Artist.Name|Genre|Beats.Per.Minute|Energy|Danceability|Loudness..dB..|Liveness|Valence.|Length.|Acousticness..|Speechiness.|Popularity|
++---+--------------------+-------------+-----+----------------+------+------------+--------------+--------+--------+-------+--------------+------------+----------+
+|  4|Beautiful People ...|   Ed Sheeran|  pop|              93|    65|          64|            -8|       8|      55|    198|            12|          19|        86|
+|  6|I Don't Care (wit...|   Ed Sheeran|  pop|             102|    68|          80|            -5|       9|      84|    220|             9|           4|        84|
+|  8|   How Do You Sleep?|    Sam Smith|  pop|             111|    68|          48|            -5|       8|      35|    202|            15|           9|        90|
+| 13|   Someone You Loved|Lewis Capaldi|  pop|             110|    41|          50|            -6|      11|      45|    182|            75|           3|        88|
+| 38|Antisocial (with ...|   Ed Sheeran|  pop|             152|    82|          72|            -5|      36|      91|    162|            13|           5|        87|
+| 44|                Talk|       Khalid|  pop|             136|    40|          90|            -9|       6|      35|    198|             5|          13|        84|
+| 50|Cross Me (feat. C...|   Ed Sheeran|  pop|              95|    79|          75|            -6|       7|      61|    206|            21|          12|        82|
++---+--------------------+-------------+-----+----------------+------+------------+--------------+--------+--------+-------+--------------+------------+----------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------- Using groupBy() function ---------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+The groupBy() function collects the similar category data.
+
+songdf.groupBy("Genre").count().show()  
+
+Output:
+
++----------------+-----+
+|           Genre|count|
++----------------+-----+
+|        boy band|    1|
+|      electropop|    2|
+|             pop|    7|
+|         brostep|    2|
+|        big room|    1|
+|       pop house|    1|
+|  australian pop|    1|
+|             edm|    3|
+|  r&b en espanol|    1|
+|       dance pop|    8|
+|       reggaeton|    2|
+|    canadian pop|    2|
+|      trap music|    1|
+|     escape room|    1|
+|  reggaeton flow|    2|
+|  panamanian pop|    2|
+|     atl hip hop|    1|
+|     country rap|    2|
+|canadian hip hop|    3|
+|         dfw rap|    2|
++----------------+-----+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+repartition(numpartitions, *cols)
+
+The repartition() returns a new DataFrame which is a partitioning expression. This function accepts two parameter numpartitions and *col. The numpartitions parameter specifies the target number of columns.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+song_spotify.repartition(10).rdd.getNumPartitions()  
+data = song_spotify.union(song_spotify).repartition("Energy")  
+data.show(5)  
+---------------------------------------------------------------------------------------------------
+Output:
+
++---+--------------------+-----------+-------+----------------+------+------------+--------------+--------+--------+-------+--------------+------------+----------+
+|_c0|          Track.Name|Artist.Name|  Genre|Beats.Per.Minute|Energy|Danceability|Loudness..dB..|Liveness|Valence.|Length.|Acousticness..|Speechiness.|Popularity|
++---+--------------------+-----------+-------+----------------+------+------------+--------------+--------+--------+-------+--------------+------------+----------+
+|  4|Beautiful People ...| Ed Sheeran|    pop|              93|    65|          64|            -8|       8|      55|    198|            12|          19|        86|
+|  5|Goodbyes (Feat. Y...|Post Malone|dfw rap|             150|    65|          58|            -4|      11|      18|    175|            45|           7|        94|
+| 17|          LA CANCI?N|   J Balvin|  latin|             176|    65|          75|            -6|      11|      43|    243|            15|          32|        90|
+|  4|Beautiful People ...| Ed Sheeran|    pop|              93|    65|          64|            -8|       8|      55|    198|            12|          19|        86|
+|  5|Goodbyes (Feat. Y...|Post Malone|dfw rap|             150|    65|          58|            -4|      11|      18|    175|            45|           7|        94|
++---+--------------------+-----------+-------+----------------+------+------------+--------------+--------+--------+-------+--------------+------------+----------+
+only showing top 5 rows
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

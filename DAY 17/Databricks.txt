@@ -1,0 +1,94 @@
+Databricks REST API reference
+
+This reference contains information about the Databricks application programming interfaces (APIs).
+Each API reference page is presented primarily from a representational state transfer (REST) perspective.
+
+Databricks REST API calls typically include the following components:
+
+The workspace instance name of your Databricks deployment.
+
+The REST API operation type, such as GET, POST, PATCH, or DELETE.
+
+The REST API operation path, such as /api/2.0/clusters/get,
+to get information for the specified cluster.
+
+Databricks authentication information, such as a Databricks personal access token.
+
+Any request payload or request query parameters that are supported by the REST API operation, 
+such as a cluster's ID.
+
+Databricks REST API calls typically return a response payload that contains information about 
+the request, such as a cluster's settings. 
+
+These response payloads are typically in JSON format.
+For instance, the following curl command requests information about the cluster with the specified cluster ID. 
+
+In this command, the local environment variables DATABRICKS_HOST and DATABRICKS_TOKEN represent 
+the workspace instance name of your Databricks deployment and your Databricks personal access token 
+value, respectively. To set local environment variables, see your operating system's documentation.
+
+
+curl --request GET "https://${DATABRICKS_HOST}/api/2.0/clusters/get" \
+     --header "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+     --data '{ "cluster_id": "1234-567890-a12bcde3" }'
+
+
+The response payload contains contents similar to the following in JSON format.
+ Some response payload fields are omitted here for brevity.
+
+{
+  "cluster_id": "1234-567890-a12bcde3",
+  "creator_user_name": "someone@example.com",
+  "...": "...",
+  "cluster_name": "My New Cluster",
+  "...": "...",
+  "autotermination_minutes": 15,
+  "...": "...",
+  "state": "TERMINATED",
+  "state_message": "Inactive cluster terminated (inactive for 15 minutes).",
+  "...": "..."
+}
+
+For information about how to provide the preceding components to your preferred developer tool, 
+as well as how to parse response payloads, see your provider's documentation. 
+
+Databricks developer tools such as the Databricks command-line interface (CLI), 
+the Databricks software development kits (SDKs), and the Databricks Terraform provider provide
+the preceding Databricks REST API components within common command-line and programming language 
+constructs.
+
+This reference describes the types, paths, and any request payload or query parameters, 
+for each supported Databricks REST API operation. Many reference pages also provide request and 
+response payload examples. 
+Some reference pages also provide examples for calling a Databricks REST API operation by using 
+the Databricks CLI, the Databricks Terraform provider, or one or more of the Databricks SDKs.
+
+
+Rate limits
+
+To ensure high quality of service under heavy load, 
+Databricks enforces rate limits for all REST API calls. 
+Limits are set per endpoint and per workspace to ensure fair usage and high availability.
+Requests that exceed the rate limit return a 429 response status code.
+For information on rate limits for API requests, see API rate limits.
+
+
+Runtime version strings
+
+Many API calls require you to specify a Databricks runtime version string. 
+This section describes the structure of a version string in the Databricks REST API.
+
+<M>.<F>.x[-cpu][-esr][-gpu][-ml][-photon]-scala<scala-version>
+where
+M: Databricks Runtime major release
+F: Databricks Runtime feature release
+cpu: CPU version (with -ml only)
+esr: Extended Support
+gpu: GPU-enabled
+ml: Machine learning
+photon: Photon
+scala-version: version of Scala used to compile Spark: 2.10, 2.11, or 2.12
+
+For example:
+7.6.x-gpu-ml-scala2.12 represents Databricks Runtime 7.6 for Machine Learning, is GPU-enabled, 
+and uses Scala version 2.12 to compile Spark version 3.0.1

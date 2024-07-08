@@ -14,7 +14,7 @@ print("car count is "  + str(y))
 # Add one more element to the cars array:
 cars = ["Ford", "Volvo", "BMW"]
 cars.append("Honda")
-print(cars)
+print("append",cars)
 
 # You can use the pop() method to remove an element from the array.
 cars.pop(2)

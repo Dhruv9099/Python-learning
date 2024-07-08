@@ -1,7 +1,7 @@
 if True:
     print("if condition execute")
 else:
-    print("else condition ececute")
+    print("else condition execute")
 
 price = 343
 if price > 100:

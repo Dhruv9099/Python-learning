@@ -6,7 +6,7 @@
 myset = {"apple", "banana", "cherry"}
 print(myset)
 
-thissset = {"apple", "banana", "cherry", True, 1, 2}
+thissset = {"apple", "banana", "cherry", True, 2,1}
 print(thissset)
 
 thisset = {"apple", "banana", "cherry", False, True, 0}

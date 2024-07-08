@@ -12,7 +12,7 @@ my_function()
 def my_function(child3, child2, child1):
     print("The youngest child is " + child3)
 
-
+my_function("Emil","Tobias","Linus")
 my_function(child1="Emil", child2="Tobias", child3="Linus")
 
 
@@ -41,8 +41,6 @@ gmean1 = (c*d)/(c+d)
 print("8 and 7 gmean is " + str(gmean1))
 
 # with Function
-
-
 def calculateGmean(a, b):
     Gmean = (a*b)/(a+b)
     print(Gmean)

@@ -201,8 +201,8 @@
 # print(student)
 
 #ex3 list methods
-list [2,4,6,5,7]
-print(list)
+mylist =[2,4,6,5,7]
+print(mylist)
 
 # print(list.append(9))           # add  element at last    -> [2,4,6,5,7,9]
 # print("append list",list)
@@ -213,12 +213,81 @@ print(list)
 # print(list.sort(reverse=True()))           # reverse order  decensind order       
 # print("deseding order list",list)
 
-# print(list.reverse())           # reverse order           -> [9,2,4,7,6,5]
+reverseds = [element for  element in reversed(mylist)]    # reverse order           -> [9,2,4,7,6,5]
+print(reverseds)
 
+mylist.reverse() 
+print(mylist)
 # print(list.insert(1,10))        # insert element at pos   -> [5,10,6,7,9,2,4]
 
 # print(list.remove(9))           # remove element         -> [5,10,6,7,2,4]
 
 # print(list.pop(1))              # pop element from pos -> [5,6,7,2,4]
 
+# ----------------- unpacking/starred expressions (*) ----------------------------------
 
+# How can you use unpacking/starred expressions (*) to assign multiple values to a variable and pass them as separate arguments to a function?
+# In Python, you can use unpacking/starred expressions (*) to assign multiple values to a single variable.
+# This is particularly useful when you want to extract specific elements from a sequence and group the remaining elements together. 
+# After unpacking the values, you can pass them as separate arguments to a function using the same starred expression. Here's an example:]
+
+def func():
+    return [1, 2, 3, 4, 5]
+
+a, *b, c = func()
+
+print("func()", func())
+print(a)  # 1
+print("b",b)  # [2, 3, 4]
+print(c)  # 5
+
+def another_func(arg1, arg2, arg3):
+    return arg1 + arg2 + arg3
+
+result = another_func(*b)
+print(result)  # 9
+
+
+
+# What are Python's generators and the `yield` keyword?
+# Generators are special types of iterators that allow you to iterate over 
+# a potentially infinite sequence of items without storing them in memory.
+# They are defined using functions that contain the `yield` keyword. 
+# When a generator function is called, 
+# it returns a generator object without executing the function.
+# The function is only executed when the generator's `__next__()` method 
+# is called. 
+# The method can be called a) directly, b) using a built-in function next()
+# or c) via a loop. For example:
+
+
+print("yield")
+def count_up():
+    count = 1
+    while True:
+        yield count
+        count += 1
+
+counter = count_up()
+
+# a) direct call
+print("direct call: ",counter.__next__())
+
+# b) using next()
+print("using next(): ",next(counter))  # 1
+
+
+#  What is the difference between `__str__` and `__repr__` in Python?
+# `__str__` and `__repr__` are special methods in Python that define human-readable and unambiguous string representations of an object, respectively. Typically, __str__ is regarded as "user-oriented" and __repr__ is regarded as "programmer-oriented". The `__str__` method is called by the `str()` function and the `print()` function, while the `__repr__` method is called by the `repr()` function and the interactive interpreter. If `__str__` is not defined for a class, Python will use `__repr__` as a fallback. Example:
+
+dog_obj = Dog(name="Spike", owner="Bob")
+print("str(dog_obj) ",str(dog_obj))
+print("repr(dog_obj) ",repr(dog_obj))
+
+#13242;properties={"date_created": "2023-10-31", "owner_id": "3652"}
+
+# 19. What are Python's descriptors?
+
+# Descriptors define how attributes are accessed, modified, and deleted in a class. 
+# They implement one or more of the special methods `__get__`, `__set__`, and `__delete__`. Descriptors are 
+# typically used to implement properties, methods, and class methods in Python.

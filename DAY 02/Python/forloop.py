@@ -42,6 +42,7 @@ while i<5:
 
 
 nlis = ['python', 3.14, 2022, [1, 1, 2, 3, 5, 8, 13, 21, 34], ('hello', 'python', 3,14, 2022)]
+print (type(nlis))
 print(nlis)
 clone_list = nlis[:]
 print(clone_list)

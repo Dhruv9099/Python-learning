@@ -227,3 +227,31 @@ print(values)
 
 
 # ---------------------------------------------------
+# n this example, 
+# modifying the nested list in shallow_copy also affects original_list
+# because the nested list is still a reference to the same object
+import copy
+
+original_list = [1, 2, [3, 4]]
+print("orginal list: ",original_list)
+shallow_copy = copy.copy(original_list)
+
+shallow_copy[2][0] = 99  # Modify the nested list
+
+print("Shallow copy:", shallow_copy)    # Output: [1, 2, [99, 4]]
+print("Original list:", original_list)  # Output: [1, 2, [99, 4]]
+
+
+# ---------------------------------------------------
+import copy
+
+original_list = [1, 2, [3, 4]]
+deep_copy = copy.deepcopy(original_list)
+
+deep_copy[2][0] = 99  # Modify the nested list
+deep_copy[0] =100
+print("Original list:", original_list)  # Output: [1, 2, [3, 4]]
+print("Deep copy:", deep_copy)          # Output: [1, 2, [99, 4]]
+# In this example, modifying the nested list in 
+# deep_copy does not affect original_list 
+# because the nested list is a completely new and independent object.

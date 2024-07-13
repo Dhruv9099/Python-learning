@@ -3,7 +3,7 @@
 # A set is a collection which is unordered, unchangeable*, unindexed, and Duplicates Not Allowed
 # Set items can be of any data type: string, integer, float, boolean etc., even None.
 #Once a set is created, you cannot change its items, but you can add new items.
-myset = {"apple", "banana", "cherry"}
+myset = { "banana","apple", "banana", "cherry", "cherry"}
 print(myset)
 
 thissset = {"apple", "banana", "cherry", True, 2,1}

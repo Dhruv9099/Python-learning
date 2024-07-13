@@ -8,7 +8,7 @@ if b > a:
 
 
 # Elif  statement
-    a = 33
+a = 33
 b = 33
 print("elif statement")
 if b > a:

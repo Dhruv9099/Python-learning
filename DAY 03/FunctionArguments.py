@@ -30,7 +30,7 @@ def average(*numbers):
     for i in numbers:
         sum = sum + i
     print("Average is :", sum / len(numbers))
-average(3, 3)
+average(3, 3,2,2)
 
 
 def average(*numbers):

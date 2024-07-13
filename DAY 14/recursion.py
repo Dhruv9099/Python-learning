@@ -18,12 +18,12 @@ so you get: 4, 3, 2, 1, 0 ,here we use n-1 so output is 4,3,2,1'''
 
 # //returns n!
 
-# def fact(n):
-#     if (n==0 or n==1):
-#         return 1
-#     else:
-#         return n * fact(n-1)
-# print(fact(4))
+def fact(n):
+    if (n==0 or n==1):
+        return 1
+    else:
+        return n * fact(n-1)
+print(fact(4))
 
 # //write a recursive function to calculate the sum of first n natural numbers.
 

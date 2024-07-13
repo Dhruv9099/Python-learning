@@ -10,9 +10,9 @@ def greet(fx):
         fx(*args, **kwargs)
         print("Thanks for using this function")
         print( "    -------    ")
-
     return mfx
 print( "    -------    ")
+
 @greet
 def hello():
     print("hello world")

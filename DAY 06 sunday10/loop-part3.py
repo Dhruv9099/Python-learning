@@ -7,7 +7,8 @@
 #                If the condition becomes false, it  will stop executing the code inside the loop.
 
 # 2. for loop   : It is an another way of looping through a sequence (that can be changed into iterable).
-#               In Python, sequences are data types that can be iterated upon like strings and tuples. Examples include lists, dictionaries,
+#               In Python, sequences are data types that can be iterated upon like strings and tuples.
+#               Examples include lists, dictionaries,
 #               A for loop has three parts separated by colons(:)
 #                    i) An initialization statement (which is executed once before the execution of the loop’s body portion.)
 #                    i) An initialization expression (which is executed once before the execution of the loop): This is where we initialize our counter variable.
@@ -15,6 +16,11 @@
 #                      This variable represents each element from the given iterable one by one.
 #                   2. The iterator object or the sequence that you want to iterate over.
 #                   3. The optional statement that executes on each iteration.
+
+                    # nums =[1,2,3,4,5]
+                    # for val in nums:
+                    #     print(val*2) 
+                    # print("Out of for loop")
 
 # Let's see both type of loops using examples:
 
@@ -33,10 +39,10 @@
 # 4
 # Outside the loop
 
-# i=1
-# while i<=3:
-#     print("Hello World!",i)
-# i +=1
+i=1
+while i<=3:
+    print("Hello World!",i)
+    i +=1
 
 # ex1 # print number from 1 to 100
 
@@ -123,7 +129,13 @@ print("Out of for loop")
 
 
 
+print("EXAMPLE !!!")
 
+
+for item in range(1):
+ for items in range(1):
+     print(item,items)
+  
 
 
 
@@ -173,6 +185,15 @@ print("Out of for loop")
 
 # ---------------------------------------------------
 
+
+square=[]
+
+for i in range(1,11):
+    square.append(i**2)
+print(square)
+
+squares=[x**2 for x in range(1,11)]
+print(squares)
 # ---------------------------------------------------
 
 # ---------------------------------------------------

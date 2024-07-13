@@ -21,7 +21,7 @@ for Mark in Marks:
         print("Dhruv,Awasome!")
     index += 1
 
-
+print("using enumerate (iterarrble, start=0)")
 
 for index, Mark in enumerate(Marks): 
     print(Mark)

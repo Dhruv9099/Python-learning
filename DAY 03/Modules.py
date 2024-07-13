@@ -8,3 +8,5 @@ import math
 
 # Calling function from imported module
 print("Math factorial: ", math.factorial(5))
+a= math.tan(45.0)
+print(a)

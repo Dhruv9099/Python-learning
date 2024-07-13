@@ -16,8 +16,9 @@ price = 50
 quantity = 5
 if price*quantity < 500:
     print("price*quantity is less than 500")
+    print(f"price: {price} Multiply by  quantity: {quantity} is less than 500")
     print("price =", price)
-    print("quantity =", quantity)
+    print("quantity =", quantity)   
 
 
 def main():

@@ -56,7 +56,8 @@ def is_palindrome(n):
     return str(n) == ''.join(reversed(str(n)))
  
 # Get the number from the user
-n = int(input("Enter number: "))
+# n = int(input("Enter number: "))
+n = 45
  
 # Check if the number is a palindrome
 if is_palindrome(n):
@@ -69,46 +70,131 @@ else:
 # Fahrenheit = Celsius * 9/5 + 32,
 # to calculate the equivalent temperature in Fahrenheit.  
 
-celsius = int(input("Enter celsius: "))
+# celsius = int(input("Enter celsius: "))
+celsius = 20
 Fahrenheit = celsius * 9/5 +32 
 print(f"fehrenheit of celsius {celsius} is {Fahrenheit} fehrenheit.")
 
 
 
+# datetime standard library 
+import datetime
 
-# Implement an LRU (Least Recently Used) Cache.
-from collections import OrderedDict
+# Get the current date and time
+current_datetime = datetime.datetime.now()
+print(current_datetime)
+# Format the date and time as a string
+formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
 
-class LRUCache:
-    def __init__(self, capacity: int):
-        self.cache = OrderedDict()
-        self.capacity = capacity
+# Print the result
+print(formatted_datetime)
 
-    def get(self, key: int) -> int:
-        if key not in self.cache:
-            return -1
-        else:
-            # Move the accessed key to the end to show that it was recently used
-            self.cache.move_to_end(key)
-            return self.cache[key]
 
-    def put(self, key: int, value: int) -> None:
-        if key in self.cache:
-            # Move the existing key to the end to show that it was recently used
-            self.cache.move_to_end(key)
-        self.cache[key] = value
-        if len(self.cache) > self.capacity:
-            # Pop the first item from the OrderedDict (the least recently used element)
-            self.cache.popitem(last=False)
 
-# Example usage
-lru_cache = LRUCache(2)
-lru_cache.put(1, 1)
-lru_cache.put(2, 2)
-print(lru_cache.get(1))    # returns 1
-lru_cache.put(3, 3)        # evicts key 2
-print(lru_cache.get(2))    # returns -1 (not found)
-lru_cache.put(4, 4)        # evicts key 1
-print(lru_cache.get(1))    # returns -1 (not found)
-print(lru_cache.get(3))    # returns 3
-print(lru_cache.get(4))    # returns 4
+
+
+
+# sys library
+
+import sys
+
+# Check the number of command-line arguments
+num_arguments = len(sys.argv)
+
+# Display the script name and command-line arguments
+script_name = sys.argv[0]
+arguments = sys.argv[1:]
+
+print(f"Script: {script_name}")
+print(f"Number of arguments: {num_arguments - 1}")
+print(f"Arguments: {arguments}")
+
+
+
+# math library
+
+import math
+
+# Input a number
+input_number = 25
+
+# Calculate the square root using the math module
+square_root = math.sqrt(input_number)
+
+# Display the result
+print(f"The square root of {input_number} is: {square_root}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # Implement an LRU (Least Recently Used) Cache.
+# from collections import OrderedDict
+
+# class LRUCache:
+#     def __init__(self, capacity: int):
+#         self.cache = OrderedDict()
+#         self.capacity = capacity
+
+#     def get(self, key: int) -> int:
+#         if key not in self.cache:
+#             return -1
+#         else:
+#             # Move the accessed key to the end to show that it was recently used
+#             self.cache.move_to_end(key)
+#             return self.cache[key]
+
+#     def put(self, key: int, value: int) -> None:
+#         if key in self.cache:
+#             # Move the existing key to the end to show that it was recently used
+#             self.cache.move_to_end(key)
+#         self.cache[key] = value
+#         if len(self.cache) > self.capacity:
+#             # Pop the first item from the OrderedDict (the least recently used element)
+#             self.cache.popitem(last=False)
+
+# # Example usage
+# lru_cache = LRUCache(2)
+# lru_cache.put(1, 1)
+# lru_cache.put(2, 2)
+# print(lru_cache.get(1))    # returns 1
+# lru_cache.put(3, 3)        # evicts key 2
+# print(lru_cache.get(2))    # returns -1 (not found)
+# lru_cache.put(4, 4)        # evicts key 1
+# print(lru_cache.get(1))    # returns -1 (not found)
+# print(lru_cache.get(3))    # returns 3
+# print(lru_cache.get(4))    # returns 4

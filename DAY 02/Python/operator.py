@@ -1,6 +1,6 @@
 # Arithmetic Operation
-x= 34
-y=22
+x= 2
+y=6
 
 print(x+y) # addition
 print(x-y) # subtraction

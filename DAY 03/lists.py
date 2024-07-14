@@ -84,3 +84,16 @@ print("l", l)
 print("m", m)
 k= m+l
 print("K" , k)
+
+
+# clone list
+nlis = ['python', 3.14, 2022, [1, 1, 2, 3, 5, 8, 13, 21, 34], ('hello', 'python', 3,14, 2022)]
+print (type(nlis))
+print(nlis)
+clone_list = nlis[:]
+print(clone_list)
+print('clone_list[0]:', clone_list[0])
+nlis[0] = 'hello, python!'
+print('nlis[0]:', nlis[0])
+print(clone_list)
+print(nlis)

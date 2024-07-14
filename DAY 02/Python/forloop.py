@@ -10,6 +10,8 @@ for char in 'hello':
 number ={1:'one',2:'two',3:'three'}
 for pa in number.items():
     print(pa)
+    
+# 
 
 def add(a,b):
     return a+b
@@ -31,6 +33,10 @@ d = {"+":add,"-":sub,"*":mul,"/":div}
 def switch(operator,x,y):
     return(d.get(operator,default))(x,y)
 
+result = switch("+", 5, 3)
+print("result: ", result)  # Output: 8
+
+
 
 i = 1
 while i<5:
@@ -41,19 +47,9 @@ while i<5:
 
 
 
-nlis = ['python', 3.14, 2022, [1, 1, 2, 3, 5, 8, 13, 21, 34], ('hello', 'python', 3,14, 2022)]
-print (type(nlis))
-print(nlis)
-clone_list = nlis[:]
-print(clone_list)
-print('clone_list[0]:', clone_list[0])
-nlis[0] = 'hello, python!'
-print('nlis[0]:', nlis[0])
-print(clone_list)
-print(nlis)
 
-Firstname= input( "Enter your First name: " )
-print("your first name is " + Firstname)
+# Firstname= input( "Enter your First name: " )
+# print("your first name is " + Firstname)
 
 
 

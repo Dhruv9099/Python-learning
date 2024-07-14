@@ -43,9 +43,14 @@ if a > b:
 a = 200
 b = 33
 c = 500
-if a > b and c > a:
+if (a > b and c > a):
     print("Both conditions are True")
-
+    
+elif (a > b or c > a):
+    print("One of the conditions is True")
+    
+else:
+    print("Both conditions are False")
 
 # Nested If: You can have if statements inside if statements, this is called nested if statements.
 x = 41

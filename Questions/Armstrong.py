@@ -4,8 +4,8 @@ An Armstrong number (also known as a narcissistic number or pluperfect number)
 is a number that is equal to the sum of its own digits raised to the
 power of the number of digits. For example, 153 is an Armstrong number because:
 153=1*1*1 +5*5*5 +3*3*3
-
-
+370= 3*3*3+ 7*7*7+0*0*0
+25=2*2 + 5*5 is not armstrong
 """
 
 

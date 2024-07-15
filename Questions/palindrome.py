@@ -21,9 +21,6 @@ else:
     print(f"The number {temp} isn't a palindrome!")
 
 
-
-
-
 # Method 2: Palindrome in Python using Built-in Function
 
 def is_palindrome(n):

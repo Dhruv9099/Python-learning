@@ -33,7 +33,8 @@ x.name()
 
 # The child's init() function overrides the inheritance of the parent's init() function.
 
-# Use __init__() in child class 
+# Use __init__() in child cla
+# ss 
 class Student(Person):
     def __init__(self, fname, lname):
         Person.__init__(self, fname, lname)

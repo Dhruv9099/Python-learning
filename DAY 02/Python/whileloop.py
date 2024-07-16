@@ -10,7 +10,7 @@ while i < 6:
 # With the break statement we can stop the loop even if the while condition is true:
   
 # Exit the loop when i is 3:
-print("Break  in while loop ")
+print("Break  in while loop if i == 3: ---")
 i = 1
 while i < 6:
   print(i)
@@ -23,14 +23,16 @@ while i < 6:
 # With the continue statement we can stop the current iteration, and continue with the next:
 
 # Continue to the next iteration if i is 3:
-print("Continue statement below:")
+print("Continue statement below:  if i == 3:continue")
 i = 0
 while i < 6:
   i += 1
   if i == 3:
+    
     continue
   print(i)
   
+
   # Do while loop
   
   
@@ -59,3 +61,11 @@ print(" witout swapping x: ",x ,"; y: ",y)
 x, y = swap_without_temp(x, y)
 
 print("After swapping: x =", x, ", y =", y)
+
+# method 2
+
+def swp(a,b):
+  a,b =b,a
+  return a,b
+
+swp(5,10)

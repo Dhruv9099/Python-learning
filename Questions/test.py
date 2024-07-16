@@ -39,3 +39,14 @@ dimensions = (800, 600)
 print(dimensions)
 dimensions = (1200, 900)
 print(dimensions)
+
+
+
+
+
+names = ["Jacob", "Joe", "Jim"]
+
+if (name := input("Enter a name: ")) in names:
+    print(f"Hello, {name}!")
+else:
+    print("Name not found.")

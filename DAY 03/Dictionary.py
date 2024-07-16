@@ -1,6 +1,9 @@
-dict1 = {"good": "Somthing pleasant", "bad": "Something bad"}
+dict1 = {"good": "Somthing pleasant", 
+         "bad": "Something bad"}
 
-dict2 = {"name": "Dhruv", "age": 30, "city": "Delhi"}
+dict2 = {"name": "Dhruv", 
+        "age": 30, 
+        "city": "Delhi"}
 print(dict1)
 print(dict2)
 

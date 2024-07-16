@@ -3,12 +3,9 @@
 def my_function():
     print("Hello from a function")
 
-
 my_function()
 
 # Keyword Arguments
-
-
 def my_function(child3, child2, child1):
     print("The youngest child is " + child3)
 
@@ -18,10 +15,8 @@ my_function(child1="Emil", child2="Tobias", child3="Linus")
 
 # Default Parameter Value
 # The following example shows how to use a default parameter value.
-
 def my_function(country="Norway"):
     print("I am from " + country)
-
 
 my_function()  # default value
 my_function("Sweden")

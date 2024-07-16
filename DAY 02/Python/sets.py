@@ -49,25 +49,18 @@ print(thisset)
 
 
 # It is also possible to use the set() constructor to make a set.
-
 set1= set((1,2,3)) 
-print(set1) # output: {1,2,3}
-
+print(set1) 
+# output: {1,2,3}
 
 
 # To remove an item in a set, use the remove(), or the discard() method.
-
-
 thisset.remove("banana")
 print(thisset)
 
-
-
 # Remove "mango" by using the discard() method:
-
 thisset.discard("mango")
 print(thisset)
-
 
 
 # Remove a random item by using the pop() method:
@@ -94,7 +87,7 @@ y = {'google', 'microsoft', 'apple'}
 z = x.union(y) 
 print(z)
 
-set3=x | y
+set3= x | y
 print("set3:\n " ,set3)
 
 

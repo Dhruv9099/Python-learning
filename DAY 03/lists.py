@@ -46,14 +46,10 @@ print("even reverse", A[-1:-10:-2])  # even reverse
 
 
 list= [i*i for i in range(10)]
-
 print(list)
 
-list=[i*i for i in range(10) if
-    i%2==0]
+list=[i*i for i in range(10) if i%2==0]
 print(list)
-
-
 
 
 l= [11,45,1,2,6,4]

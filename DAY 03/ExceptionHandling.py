@@ -1,7 +1,7 @@
-"""# Exception is runtime erro that terminates the exceution of
+"""# Exception is runtime error that terminates the exceution of
 # the program
-# Exception HAndling generates a message in correspondence 
-#5to the occurence of an erro anf=d takes the right step ti handle it.
+# Exception Handling generates a message in correspondence 
+#5th the occurence of an error ans =d takes the right step to handle it.
 """
 #error types -compile ,logical, runtime error
 

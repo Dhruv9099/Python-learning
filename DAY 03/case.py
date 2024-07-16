@@ -16,3 +16,20 @@ match a:
         print('Value is 5')
     case _:
         print('Value is not Found')
+
+
+
+b = 0
+match b:
+    case 1:
+        print("b=1")
+    case b if b > 1:
+        print("b>1")
+    case b if b != 0:
+        print("b!=0")
+    case 2:
+        print("b=2")
+    case 0:
+        print("b=0")
+    case _:
+        print("above not")
